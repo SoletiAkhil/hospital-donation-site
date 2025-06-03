@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('hospital_brackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333;
+}
+
+header {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.left-header h1 {
+    font-size: 18px;
+}
+
+.right-header p {
+    margin: 2px 0;
+    font-size: 14px;
+}
+
+
+.hospital-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.donation-form-section {
+    display: flex;
+    justify-content: center;
+    margin: 40px 20px;
+}
+
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2e7d32;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #256029;
+}
+
+/* Modal background */
+.modal {
+    display: none; /* hidden by default */
+    position: fixed; /* stay in place */
+    z-index: 9999; /* above everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* semi-transparent bg */
+}
+
+/* Modal content box */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* QR details inside modal */
+.qr-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.qr-details {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.qr-code img {
+    width: 220px;
+    border-radius: 10px;
+}
+
+.bank-details {
+    font-size: 16px;
+    text-align: left;
+    max-width: 300px;
+}
+
+.bank-details h3 {
+    color: #006400;
+    margin-bottom: 10px;
+}
+
+.iti {
+  width: 100%;
+}
+
+#phone {
+  width: 100% !important;
+}
+
+.hospital-gallery {
+  width: 100%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  box-sizing: border-box;
+}
+
+.gallery-text {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.gallery-text h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.gallery-text p {
+  font-size: 18px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .qr-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-text {
+        font-size: 14px;
+        bottom: 10px;
+        left: 10px;
+        padding: 10px;
+    }
+}

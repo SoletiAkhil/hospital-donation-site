@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hospital Donation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+    }
+    .qr-description {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .qr-details {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .qr-code img {
+      width: 220px;
+      border-radius: 10px;
+    }
+    .bank-details {
+      font-size: 16px;
+      text-align: left;
+      max-width: 300px;
+    }
+    .bank-details h3 {
+      color: #006400;
+      margin-bottom: 10px;
+    }
+    #completeBtn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      background: #2e7d32;
+      color: #fff;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* Close button style for Thank You modal */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #444;
+      cursor: pointer;
+      user-select: none;
+    }
+    .close-btn:hover {
+      color: #000;
+    }
+    /* Thank You modal text */
+    #thankYouModal .modal-content {
+      max-width: 400px;
+    }
+    #thankYouModal p {
+      font-size: 20px;
+      color: #2e7d32;
+      margin: 40px 20px 20px 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left-header">
+      <h1>Support Our Hospital - Save Lives</h1>
+    </div>
+    <div class="right-header">
+      <p>📞 +91-9032589283</p>
+      <p>📧 soletiakhil1995@gmail.com</p>
+    </div>
+  </header>
+
+  <section class="hospital-gallery">
+    <!-- <img src="donation_image.avif" alt="Hospital" /> -->
+    <div class="gallery-text">
+      <h2>Join Hands in Saving Lives</h2>
+      <p>Your generous donation will help us upgrade our equipment, support underprivileged patients, and improve healthcare facilities.Your generous donation will help us upgrade our equipment, support underprivileged patients, and improve healthcare facilities.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="donation-form-section">
+      <form id="donationForm">
+        <h2>Donation Form</h2>
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input id="phone" type="tel" name="phone" placeholder="Mobile Number" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="number" name="amount" placeholder="Donation Amount (INR)" required />
+        <input type="text" name="address" placeholder="Street Address" required />
+        <input type="text" name="city" placeholder="City" required />
+        <input type="text" name="zip" placeholder="Zip Code" required />
+        <input type="text" name="country" placeholder="Country" required />
+        <button type="submit">Donate Now</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Donation Modal -->
+  <div id="donationModal" class="modal" aria-modal="true" role="dialog" aria-labelledby="donationTitle" aria-describedby="donationDesc">
+    <div class="modal-content">
+      <p id="donationDesc" class="qr-description">You can donate via UPI/QR scan or directly transfer to our bank account</p>
+      <div class="qr-details">
+        <div class="qr-code">
+          <img src="qr-code.png" alt="QR Code" />
+        </div>
+        <div class="bank-details">
+          <h3 id="donationTitle">Bank Details</h3>
+          <p><strong>Account Name:</strong> ABC Hospital Trust</p>
+          <p><strong>Account Number:</strong> 1234567890</p>
+          <p><strong>IFSC:</strong> ABCD0123456</p>
+          <p><strong>Bank Name:</strong> XYZ Bank</p>
+        </div>
+      </div>
+      <button id="completeBtn">Completed</button>
+    </div>
+  </div>
+
+  <!-- Thank You Modal -->
+  <div id="thankYouModal" class="modal" aria-modal="true" role="dialog" aria-labelledby="thankYouTitle" aria-describedby="thankYouDesc">
+    <div class="modal-content">
+      <span id="closeThankYou" class="close-btn" aria-label="Close">&times;</span>
+      <p id="thankYouDesc">Thank you for your generous donation!</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
+  <script>
+    const phoneInput = document.querySelector("#phone");
+    window.intlTelInput(phoneInput, {
+      initialCountry: "in",
+      separateDialCode: true,
+      utilsScript:
+        "https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js",
+    });
+
+    const form = document.getElementById("donationForm");
+    const donationModal = document.getElementById("donationModal");
+    const completeBtn = document.getElementById("completeBtn");
+
+    const thankYouModal = document.getElementById("thankYouModal");
+    const closeThankYouBtn = document.getElementById("closeThankYou");
+    
+    // Hide modals on load
+    donationModal.style.display = "none";
+    thankYouModal.style.display = "none";
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      donationModal.style.display = "flex";
+    });
+
+    completeBtn.addEventListener("click", () => {
+      donationModal.style.display = "none";
+      form.reset();
+      thankYouModal.style.display = "flex";
+    });
+
+    closeThankYouBtn.addEventListener("click", () => {
+      thankYouModal.style.display = "none";
+    });
+
+    // Disable closing donation modal on outside click (no listener)
+    // Disable closing thank you modal on outside click as well (optional)
+  </script>
+</body>
+</html>
