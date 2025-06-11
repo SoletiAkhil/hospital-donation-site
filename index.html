@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <title>Rohini and Thaswika Foundation</title>
   <link rel="stylesheet" href="styles.css" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/css/intlTelInput.min.css" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -16,123 +16,114 @@
       <h1>Rohini and Thaswika Foundation</h1>
     </div>
     <div class="right-header">
-      <p>📞 +91-8978310806</p>
-      <p>📧 Randdfoundation01@gmail.com</p>
+      <span class="donate-person-icon" aria-label="Support with love">🫶</span>
+      <button id="donateBtn" class="donate-btn">Donate <span class="donate-heart" aria-label="love">❤️</span></button>
     </div>
   </header>
-
-  <section class="hospital-gallery">
-    <!-- <img src="donation_image.avif" alt="Hospital" /> -->
-    <div class="gallery-text">
-  <h2>Welcome to Rohini and Thaswika Foundation</h2>
-  <h3>Empowering Lives. Protecting Nature.</h3>
-  <h4>Who We Are</h4>
-  <p>
-    Rohini and Thaswika Foundation is a non-profit organization committed to creating a healthier planet and a more compassionate society. Established with a deep purpose and personal journey, we strive to protect the environment and uplift the health of underserved communities across India.
-  </p>
-  <p>
-    With a dual focus on environmental sustainability and public health, we aim to drive change at both the grassroots and systemic levels—through action, innovation, and awareness.
-  </p>
-  <h4>Our Mission</h4>
-  <p>
-    To safeguard our environment and improve healthcare access for all—especially for those who need it most—by promoting sustainable solutions, community-driven initiatives, and a spirit of giving.
-  </p>
-  <h4>What We Do</h4>
-  <strong>Environment: Recycling &amp; Upcycling for a Greener Tomorrow</strong>
-  <p>
-    We work towards reducing the environmental impact of solid waste, by building awareness and implementing action-oriented solutions such as:
-    <ul>
-      <li><strong>Reverse Vending Machines (RVMs):</strong> Smart systems for public plastic collection.</li>
-      <li><strong>Scheduled Pickups:</strong> Doorstep waste collection drives for homes, offices, and institutions.</li>
-      <li><strong>Upcycling Initiatives:</strong> Transforming waste into valuable products like:
-        <ul>
-          <li>T-shirts</li>
-          <li>Home décor</li>
-          <li>Toys</li>
-          <li>Tiles &amp; bricks</li>
-        </ul>
-      </li>
-    </ul>
-    Our goal is to inspire a circular economy where waste becomes a resource—protecting wildlife, human health, and the planet.
-  </p>
-  <strong>Healthcare: Compassion for Every Life</strong>
-  <p>
-    We believe that access to healthcare is a basic human right—not a privilege. Through our healthcare initiatives, we:
-    <ul>
-      <li>Provide medical assistance and financial aid to underprivileged patients</li>
-      <li>Organize free health camps in rural and low-income communities</li>
-      <li>Promote and support blood and organ donation awareness</li>
-      <li>Partner with local hospitals and health experts to bridge care gaps</li>
-    </ul>
-    Every life matters—and we are here to ensure that no one is left behind due to lack of support.
-  </p>
-  <h4>Why We Exist</h4>
-  <p>
-    This foundation is built on lived experiences, love, and the values of empathy and service. We are inspired by the strength of individuals and families who struggle silently with health and financial challenges and by the need to preserve the planet for future generations.
-  </p>
-  <h4>Join Us</h4>
-  <p>
-    Whether you're an individual, a volunteer, a donor, or a corporate partner—there’s a place for you in our journey.<br>
-    Together, we can build a cleaner earth and a healthier society.
-  </p>
-</div>
-  </section>
-
-  <main>
-    <section class="donation-form-section">
+  <video id="bg-video" autoplay muted loop playsinline>
+        <source src="background_video.mp4" type="video/mp4" />
+  </video>
+  <section class="info-cards-section">
+  <div class="info-cards">
+    <div class="info-card card-who">
+      <div class="info-card-icon">🌱</div>
+      <h3>Who We Are</h3>
+      <p>
+        Rohini and Thaswika Foundation is a non-profit organization committed to creating a healthier planet and a more compassionate society. Established with a deep purpose and personal journey, we strive to protect the environment and uplift the health of underserved communities across India.
+        With a dual focus on environmental sustainability and public health, we aim to drive change at both the grassroots and systemic levels—through action, innovation, and awareness.
+      </p>
+    </div>
+    <div class="info-card card-mission">
+      <div class="info-card-icon">🎯</div>
+      <h3>Our Mission</h3>
+      <p>
+        To safeguard our environment and improve healthcare access for all—especially for those who need it most—by promoting sustainable solutions, community-driven initiatives, and a spirit of giving.
+      </p>
+    </div>
+    <div class="info-card card-what">
+      <div class="info-card-icon">♻️</div>
+      <h3>What We Do</h3>
+      <strong>Environment: Recycling &amp; Upcycling for a Greener Tomorrow</strong>
+      <p>
+        We work towards reducing the environmental impact of solid waste, by building awareness and implementing action-oriented solutions such as:
+      </p>
+      <ul>
+        <li><strong>Reverse Vending Machines (RVMs):</strong> Smart systems for public plastic collection.</li>
+        <li><strong>Scheduled Pickups:</strong> Doorstep waste collection drives for homes, offices, and institutions.</li>
+        <li><strong>Upcycling Initiatives:</strong> Transforming waste into valuable products like T-shirts, home décor, toys, tiles &amp; bricks.</li>
+      </ul>
+      <p>
+        Our goal is to inspire a circular economy where waste becomes a resource—protecting wildlife, human health, and the planet.
+      </p>
+      <strong>Healthcare: Compassion for Every Life</strong>
+      <ul>
+        <li>Provide medical assistance and financial aid to underprivileged patients</li>
+        <li>Organize free health camps in rural and low-income communities</li>
+        <li>Promote and support blood and organ donation awareness</li>
+        <li>Partner with local hospitals and health experts to bridge care gaps</li>
+      </ul>
+      <p>
+        Every life matters—and we are here to ensure that no one is left behind due to lack of support.
+      </p>
+    </div>
+    <div class="info-card card-why">
+      <div class="info-card-icon">💡</div>
+      <h3>Why We Exist</h3>
+      <p>
+        This foundation is built on lived experiences, love, and the values of empathy and service. We are inspired by the strength of individuals and families who struggle silently with health and financial challenges and by the need to preserve the planet for future generations.
+      </p>
+    </div>
+    <div class="info-card card-join">
+      <div class="info-card-icon">🤝</div>
+      <h3>Join Us</h3>
+      <p>
+        Whether you're an individual, a volunteer, a donor, or a corporate partner—there’s a place for you in our journey.<br>
+        Together, we can build a cleaner earth and a healthier society.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- Donation Modal -->
+  <div id="donationModal" class="modal" aria-modal="true" role="dialog" aria-labelledby="donationTitle" aria-describedby="donationDesc">
+    <div class="modal-content">
       <form id="donationForm">
-        <h2>Donation Form</h2>
+        <h2>Make a Difference</h2>
         <input type="text" name="name" placeholder="Full Name" required />
-        <input
-          id="phone"
-          type="tel"
-          name="phone"
-          placeholder="Mobile Number"
-          required
-          pattern="[0-9]{10,15}"
-          inputmode="numeric"
-          maxlength="15"
-        />        
+        <input  id="phone" type="tel" name="phone" placeholder="Mobile Number" required pattern="[0-9]{10,15}" inputmode="numeric" maxlength="15" />        
         <input type="email" name="email" placeholder="Email Address" required />
         <input type="number" name="amount" placeholder="Donation Amount (INR)" required min="1" step="1" />       
-         <input type="text" name="address" placeholder="Street Address" required />
+        <input type="text" name="address" placeholder="Street Address" required />
         <input type="text" name="city" placeholder="City" required />
         <input type="text" name="zip" placeholder="Zip Code" required />
         <input type="text" name="country" placeholder="Country" required />
         <button type="submit">Donate Now</button>
       </form>
-    </section>
-  </main>
-
-  <!-- Donation Modal -->
- <div id="donationModal" class="modal" aria-modal="true" role="dialog" aria-labelledby="donationTitle" aria-describedby="donationDesc">
-    <div class="modal-content">
-      <p id="donationDesc" class="qr-description">You can donate via UPI/QR scan or directly transfer to our bank account</p>
-      <div class="qr-details">
-        <div class="qr-code">
-          <img src="qr-code.jpeg" alt="QR Code" />
-        </div>
-        <div class="bank-details">
-          <h3 id="donationTitle">Bank Details</h3>
-          <p><strong>Bank Name:</strong> South Indian Bank</p>
-          <p><strong>Account holder name:</strong> Rohini and Thaswika Foundation Account</p>
-          <p>
-            <strong>Account Number:</strong>
-            <span id="accountNumber">0547073000000952</span>
-            <!-- <button type="button" class="copy-btn" onclick="copyToClipboard('accountNumber', this)">Copy</button> -->
-          </p>
-          <p>
-            <strong>IFSC:</strong>
-            <span id="ifscCode">SIBL0000547</span>
-            <!-- <button type="button" class="copy-btn" onclick="copyToClipboard('ifscCode', this)">Copy</button> -->
-          </p>
-          <p><strong>Branch:</strong> Quthbullapur</p>
-        </div>
-      </div>
-      <button id="completeBtn">Completed</button>
+      <button id="closeDonationModal" class="close-btn" aria-label="Close">&times;</button>
     </div>
   </div>
-
+  <!-- Bank Details Modal -->
+ <div id="bankDetailsModal" class="modal" aria-modal="true" role="dialog" aria-labelledby="bankDetailsTitle" aria-describedby="bankDetailsDesc" style="display:none;">
+  <div class="modal-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 540px;">
+    <h2 id="bankDetailsTitle" style="text-align: center;">Bank Details / UPI</h2>
+    <div style="font-size: 1.15rem; margin-bottom: 18px; text-align: center;">
+      <p><strong>Bank Name:</strong> South Indian Bank</p>
+      <p><strong>Account holder name:</strong> Rohini and Thaswika Foundation Account</p>
+      <p>
+        <strong>Account Number:</strong>
+        <span id="accountNumber">0547073000000952</span>
+      </p>
+      <p>
+        <strong>IFSC:</strong>
+        <span id="ifscCode">SIBL0000547</span>
+      </p>
+      <p><strong>Branch:</strong> Quthbullapur</p>
+    </div>
+    <img src="qr-code.jpeg" alt="Scan to Pay"
+      style="display: block; margin: 24px auto 16px auto; width: 340px; max-width: 98%; border-radius: 18px; box-shadow: 0 2px 24px #0072ff22;" />
+    <div style="font-size: 1.05rem; color: #888; text-align: center; margin-bottom: 18px;">Scan this QR code to donate via UPI</div>
+    <button id="completedDonationBtn" class="donate-btn" style="margin-top:18px;">Completed</button>
+  </div>
+</div>
   <!-- Thank You Modal -->
   <div id="thankYouModal" class="modal" aria-modal="true" role="dialog" aria-labelledby="thankYouTitle" aria-describedby="thankYouDesc">
     <div class="modal-content">
@@ -142,43 +133,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/intlTelInput.min.js"></script>
-  <script>
-    const phoneInput = document.querySelector("#phone");
-    window.intlTelInput(phoneInput, {
-      initialCountry: "in",
-      separateDialCode: true,
-      utilsScript:
-        "https://cdn.jsdelivr.net/npm/intl-tel-input@17/build/js/utils.js",
-    });
-
-    const form = document.getElementById("donationForm");
-    const donationModal = document.getElementById("donationModal");
-    const completeBtn = document.getElementById("completeBtn");
-
-    const thankYouModal = document.getElementById("thankYouModal");
-    const closeThankYouBtn = document.getElementById("closeThankYou");
-    
-    // Hide modals on load
-    donationModal.style.display = "none";
-    thankYouModal.style.display = "none";
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      donationModal.style.display = "flex";
-    });
-
-    completeBtn.addEventListener("click", () => {
-      donationModal.style.display = "none";
-      form.reset();
-      thankYouModal.style.display = "flex";
-    });
-
-    closeThankYouBtn.addEventListener("click", () => {
-      thankYouModal.style.display = "none";
-    });
-
-    // Disable closing donation modal on outside click (no listener)
-    // Disable closing thank you modal on outside click as well (optional)
-  </script>
+  <script src="script.js"></script>
 </body>
 <footer class="site-footer">
   &copy; 2025 Rohini and Thaswika Foundation. All rights reserved.
